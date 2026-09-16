@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { ArrowLeft, Baby, Camera, Check, ChevronDown, HeartHandshake, Image as ImageIcon, Menu, MessageCircle, Phone, Play, ShieldCheck, Sparkles, Stethoscope, X } from "lucide-react";
+import { ArrowLeft, Baby, Camera, Check, ChevronDown, HeartHandshake, Image as ImageIcon, Menu, MessageCircle, Phone, Play, ShieldCheck, Sparkles, Stethoscope, Utensils, X } from "lucide-react";
 import { toast } from "sonner";
 
 const navItems = [
   ["عن الحضانة", "about"],
   ["برامجنا", "programs"],
   ["الأمان والرعاية", "care"],
+  ["التغذية والنمو", "nutrition"],
   ["تواصل معنا", "contact"],
 ];
 
@@ -18,6 +19,12 @@ const gallery = [
   { src: `${import.meta.env.BASE_URL}activity-art.png`, title: "ألواننا الأولى", category: "نشاطات فنية", tone: "yellow" },
   { src: `${import.meta.env.BASE_URL}activity-garden.png`, title: "مستكشفو الحديقة", category: "وقت الطبيعة", tone: "teal" },
   { src: `${import.meta.env.BASE_URL}activity-music.png`, title: "نغني معاً", category: "موسيقى وحركة", tone: "coral" },
+];
+const meals = [
+  { time: "٠٨:٣٠", meal: "فطور دافئ", detail: "شوفان بالحليب والموز", color: "yellow" },
+  { time: "١٠:٣٠", meal: "وجبة خفيفة", detail: "فواكه موسمية وماء", color: "teal" },
+  { time: "١٢:٣٠", meal: "غداء متوازن", detail: "أرز بالخضار ودجاج طازج", color: "coral" },
+  { time: "١٥:٣٠", meal: "وجبة ما بعد القيلولة", detail: "زبادي طبيعي وتمر مهروس", color: "yellow" },
 ];
 
 function scrollTo(id: string) { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); }
@@ -55,6 +62,8 @@ export default function Home() {
       <section id="programs" className="programs section-pad"><div className="section-head"><div><div className="section-kicker">مراحلهم، بطريقتهم <span>برامجنا</span></div><h2>لكل عمر<br /><em>عالمه الخاص.</em></h2></div><p>برامج مصممة بعناية لتناسب احتياجات طفلك في كل محطة من محطات نموه.</p></div><div className="program-grid">{programs.map(({ age, title, text, color, icon: Icon }) => <article className={`program-card ${color}`} key={title}><div className="card-top"><span>{age}</span><div className="program-icon"><Icon size={22} /></div></div><h3>{title}</h3><p>{text}</p><button onClick={reserve}>اعرفوا المزيد <ArrowLeft size={16} /></button><div className="card-number">0{programs.findIndex(p => p.title === title) + 1}</div></article>)}</div></section>
 
       <section id="care" className="care-section"><div className="care-copy"><div className="section-kicker light">راحة بالك أولاً <span>أمان ورعاية</span></div><h2>اطمئنوا،<br />هم في <em>أيدٍ أمينة.</em></h2><p>من لحظة الدخول وحتى لحظة الاستلام، نعتني بكل التفاصيل الصغيرة التي تصنع فرقاً كبيراً.</p><div className="care-list"><div><ShieldCheck /><span><b>كاميرات مراقبة 24/7</b><small>مشاهدة مباشرة آمنة للأهل</small></span></div><div><Stethoscope /><span><b>فحوصات طبية دورية</b><small>طبيب أطفال متواجد باستمرار</small></span></div><div><Check /><span><b>فريق مؤهل ومحب</b><small>تدريب إسعافات أولية معتمد</small></span></div></div></div><div className="care-orbit"><div className="orbit-ring ring-a" /><div className="orbit-ring ring-b" /><div className="care-center"><Camera size={34} /><b>نحن هنا</b><small>لكل لحظة</small></div><span className="orbit-star">✦</span><span className="orbit-heart">♥</span></div></section>
+
+      <section id="nutrition" className="nutrition section-pad"><div className="section-kicker">نغذي أجسامهم وعقولهم <span>صحة ونمو</span></div><div className="nutrition-grid"><div className="nutrition-copy"><h2>طاقة صغيرة،<br /><em>أحلام كبيرة.</em></h2><p>قائمة يومية يراجعها فريقنا بعناية لتناسب أعمارهم، وتمنحهم طاقة هادئة للعب والتعلم. نراعي الحساسية الغذائية ونشارككم كل التفاصيل.</p><button className="primary-btn nutrition-btn" onClick={() => whatsapp("مرحباً، أرغب في حجز استشارة نمو لطفلي ومعرفة جدول الوجبات اليومية.")}>احجزوا استشارة نمو <MessageCircle size={17} /></button><small className="nutrition-note">* القوائم إرشادية وتُخصص بالتنسيق مع الأهل والطبيب عند الحاجة.</small></div><div className="meal-panel"><div className="meal-panel-head"><div><span className="eyebrow"><Utensils size={14} /> قائمة اليوم</span><h3>وجبات صحية بحب</h3></div><div className="meal-day">الأربعاء<br /><b>١٦ سبتمبر</b></div></div><div className="meal-list">{meals.map(item => <div className="meal-row" key={item.time}><time>{item.time}</time><span className={`meal-dot ${item.color}`}><Utensils size={14} /></span><div><b>{item.meal}</b><small>{item.detail}</small></div><Check size={15} /></div>)}</div></div></div><div className="growth-strip"><div className="growth-intro"><span className="growth-symbol">✦</span><div><b>استشارة نمو مطمئنة</b><small>نراقب التقدم، ونحتفل بكل خطوة.</small></div></div><div className="growth-points"><span><b>تطور حركي</b><small>متابعة شهرية</small></span><span><b>نمو لغوي</b><small>أنشطة مناسبة للعمر</small></span><span><b>تغذية متوازنة</b><small>تقرير واضح للأهل</small></span></div><button className="text-link" onClick={() => whatsapp("مرحباً، أود معرفة تفاصيل استشارات النمو في حضانة نجوم صغيرة.")}>تحدثوا مع مستشارتنا <ArrowLeft size={16} /></button></div></section>
 
       <section id="gallery" className="gallery section-pad"><div className="section-head"><div><div className="section-kicker">من يومياتهم <span>المعرض</span></div><h2>لحظات صغيرة،<br /><em>ذكريات كبيرة.</em></h2></div><div className="gallery-intro"><p>نشارككم مقتطفات من أيامهم المليئة باللعب والاكتشاف.</p><div className="gallery-filters">{["الكل", "نشاطات فنية", "وقت الطبيعة", "موسيقى وحركة"].map(filter => <button className={galleryFilter === filter ? "active" : ""} key={filter} onClick={() => setGalleryFilter(filter)}>{filter}</button>)}</div></div></div><div className="gallery-grid">{gallery.filter(item => galleryFilter === "الكل" || item.category === galleryFilter).map(item => <button className={`gallery-item ${item.tone}`} key={item.title} onClick={() => setGalleryOpen(gallery.findIndex(entry => entry.title === item.title))}><img src={item.src} alt={item.title} /><span className="gallery-overlay"><ImageIcon size={18} /><b>{item.title}</b><small>{item.category}</small></span></button>)}</div></section>
 
