@@ -15,9 +15,9 @@ const programs = [
   { age: "٣ — ٤ سنوات", title: "مستكشفون", text: "نشاطات مهنية ممتعة تهيئهم للمرحلة القادمة.", color: "coral", icon: HeartHandshake },
 ];
 const gallery = [
-  { src: "/manus-storage/activity-art_39cee063.png", title: "ألواننا الأولى", category: "نشاطات فنية", tone: "yellow" },
-  { src: "/manus-storage/activity-garden_1c1c9bd1.png", title: "مستكشفو الحديقة", category: "وقت الطبيعة", tone: "teal" },
-  { src: "/manus-storage/activity-music_7044916a.png", title: "نغني معاً", category: "موسيقى وحركة", tone: "coral" },
+  { src: `${import.meta.env.BASE_URL}activity-art.png`, title: "ألواننا الأولى", category: "نشاطات فنية", tone: "yellow" },
+  { src: `${import.meta.env.BASE_URL}activity-garden.png`, title: "مستكشفو الحديقة", category: "وقت الطبيعة", tone: "teal" },
+  { src: `${import.meta.env.BASE_URL}activity-music.png`, title: "نغني معاً", category: "موسيقى وحركة", tone: "coral" },
 ];
 
 function scrollTo(id: string) { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); }
@@ -44,7 +44,7 @@ export default function Home() {
 
       <section id="home" className="hero">
         <div className="hero-copy"><div className="eyebrow"><Sparkles size={15} /> حيث يبدأ الفضول</div><h1>كل يوم<br /><em>حكاية جديدة</em><br />تُكتشف.</h1><p>مساحة آمنة ودافئة، ينمو فيها طفلك بالحب واللعب والتعلم — من شهره الأول وحتى خطواته الأولى نحو العالم.</p><div className="hero-actions"><button className="primary-btn large" onClick={reserve}>اكتشفوا عالمنا <ArrowLeft size={19} /></button><button className="play-btn" onClick={() => setShowVideo(true)}><span><Play size={15} fill="currentColor" /></span> شاهدوا يومنا في 60 ثانية</button></div><div className="trust-row"><div className="avatars"><span>س</span><span>ل</span><span>م</span><span>+</span></div><div><b>+120 عائلة مطمئنة</b><small>يثقون بنا كل يوم</small></div></div></div>
-        <div className="hero-visual"><div className="image-frame"><img src="/manus-storage/nursery-hero_5ea289e9.png" alt="أطفال يلعبون في حضانة نجوم صغيرة" /><div className="image-badge"><span className="live-dot" /> <b>يومنا مليء بالمرح</b><small>نلعب • نتعلم • نكبر</small></div></div><div className="scribble one">✦</div><div className="scribble two">☼</div><div className="floating-card"><div className="heart-icon">♥</div><div><b>رعاية بقلب كبير</b><small>فريقنا معتمد ومحب</small></div></div></div>
+        <div className="hero-visual"><div className="image-frame"><img src={`${import.meta.env.BASE_URL}nursery-hero.png`} alt="أطفال يلعبون في حضانة نجوم صغيرة" /><div className="image-badge"><span className="live-dot" /> <b>يومنا مليء بالمرح</b><small>نلعب • نتعلم • نكبر</small></div></div><div className="scribble one">✦</div><div className="scribble two">☼</div><div className="floating-card"><div className="heart-icon">♥</div><div><b>رعاية بقلب كبير</b><small>فريقنا معتمد ومحب</small></div></div></div>
         <div className="hero-doodle">⌁</div>
       </section>
 
