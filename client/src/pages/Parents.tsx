@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { ArrowLeft, Baby, Camera, Check, Clock3, FileText, Heart, LockKeyhole, LogOut, MessageCircle, Play, ShieldCheck, Sparkles, Thermometer, UserRound, X } from "lucide-react";
 import { toast } from "sonner";
 
-const whatsapp = (message: string) => window.open(`https://wa.me/966500000000?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+const whatsapp = (message: string) => window.open(`https://wa.me/962772520111?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
 
 export default function Parents() {
   const [loggedIn, setLoggedIn] = useState(false);
